@@ -17,6 +17,7 @@ public:
     ~SLR1PL0(){};
     void test();
 private:
+    /**/
     struct sentence{
         /*产生式的表达*/
         bool finish=false;       //是否结束
