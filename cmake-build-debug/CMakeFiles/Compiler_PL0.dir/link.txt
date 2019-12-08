@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Compiler_PL0.dir/lexPL0.cpp.o CMakeFiles/Compiler_PL0.dir/SLR1PL0.cpp.o CMakeFiles/Compiler_PL0.dir/main.cpp.o  -o Compiler_PL0 

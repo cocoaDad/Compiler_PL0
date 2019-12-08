@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dyf/CLionProjects/Compiler_PL0/SLR1PL0.cpp
+SLR1PL0.h
+/home/dyf/CLionProjects/Compiler_PL0/SLR1PL0.h
+
+/home/dyf/CLionProjects/Compiler_PL0/SLR1PL0.h
+stack
+-
+fstream
+-
+algorithm
+-
+queue
+-
+lexPL0.h
+/home/dyf/CLionProjects/Compiler_PL0/lexPL0.h
+
+/home/dyf/CLionProjects/Compiler_PL0/lexPL0.h
+iostream
+-
+string
+-
+math.h
+-
+vector
+-
+sstream
+-
+
+/home/dyf/CLionProjects/Compiler_PL0/main.cpp
+SLR1PL0.h
+/home/dyf/CLionProjects/Compiler_PL0/SLR1PL0.h
+
