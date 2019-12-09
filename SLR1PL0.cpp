@@ -2,12 +2,14 @@
 // Created by dyf on 2019/12/4.
 //
 
+#include <iomanip>
 #include "SLR1PL0.h"
 void SLR1PL0:: readFile(string& target){
     fstream in;
     in.open("../target.txt", ios::in);
     getline(in, target);
     in.close();
+    cout<<"target:\t\t"<<target<<endl;
 }
 
 bool SLR1PL0:: SLR(string& target) {
@@ -221,6 +223,30 @@ void SLR1PL0::scan() {
         sort(FOLLOW[i].Vt.begin(), FOLLOW[i].Vt.end());
         FOLLOW[i].Vt.erase(unique(FOLLOW[i].Vt.begin(), FOLLOW[i].Vt.end()), FOLLOW[i].Vt.end());
     }
+    cout<<endl;
+    cout<<"Vt:\t\t";
+    for(int i=0;i<Vt.size();i++)
+        cout<<Vt[i]<<'\t';
+    cout<<"\nVn:\t\t";
+    for(int i=0;i<Vn.size();i++)
+        cout<<Vn[i]<<'\t';
+    cout<<endl;
+
+    cout<<"FIRST: \n";
+    for(int i=0;i<FIRST.size();i++) {
+        cout << '\t' << FIRST[i].Vn << '\t' << ": ";
+        for (int j = 0; j < FIRST[i].Vt.size(); j++)
+            cout << FIRST[i].Vt[j] << ',';
+        cout << endl;
+    }
+    cout<<"FOLLOW: \n";
+    for(int i=0;i<Vn.size();i++) {
+        cout << '\t' << FOLLOW[i].Vn << '\t' << ": ";
+        for (int j = 0; j < FOLLOW[i].Vt.size(); j++)
+            cout << FOLLOW[i].Vt[j] << ',';
+        cout << endl;
+    }
+
 }
 
 void SLR1PL0:: table(){
@@ -395,6 +421,7 @@ void SLR1PL0:: table(){
                     DFA[j].next_list[k].point=i;
             }
         }
+        DFA[i].number=i;
     }
 
     ACTION=new act*[DFA.size()];
@@ -445,6 +472,36 @@ void SLR1PL0:: table(){
                 }
             }
         }
+    }
+    for(int i=0;i<DFA.size();i++){
+        printf("%d:\n", DFA[i].number);
+        for(int j=0;j<DFA[i].l.size();j++)
+            cout<<'\t'<<DFA[i].l[j].str<<endl;
+        for(int j=0;j<DFA[i].next_list.size();j++) {
+            if (DFA[i].next_list[j].isVt)
+                cout<<"\t\t"<<DFA[i].next_list[j].t<<": "<<DFA[i].next_list[j].point<<endl;
+            else if(!DFA[i].next_list[j].isVt)
+                printf("\t\t%c: %d\n", DFA[i].next_list[j].n, DFA[i].next_list[j].point);
+        }
+    }
+    cout<<"\n\n";
+//    cout<<"          ";
+    for(int i=0;i<Vt.size();i++){
+        cout<<left<<setw(10)<<Vt[i];
+    }
+    for(int i=0;i<Vn.size();i++){
+        cout<<left<<setw(10)<<Vn[i];
+    }
+    cout<<endl;
+    for(int i=0;i<DFA.size();i++){
+        cout<<left<<setw(10)<<i;
+        for(int j=0;j<Vt.size();j++){
+            cout<<ACTION[i][j].tag<<','<<left<<setw(8)<<ACTION[i][j].action;
+        }
+        for(int j=0;j<Vn.size();j++){
+            cout<<left<<setw(10)<<GOTO[i][j].next_l;
+        }
+        cout<<endl;
     }
 }
 
