@@ -272,7 +272,7 @@ void SLR1PL0:: table(){
             if(STR[i][0]==qt) {
                 sen.str = STR[i];
                 ii.l.push_back(sen);
-                if(isupper(STR[i][sen.tag]))
+                if(isupper(STR[i][sen.tag])&&STR[i][sen.tag]!=qt)
                     qch.push(STR[i][sen.tag]);
             }
         }
